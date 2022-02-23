@@ -94,30 +94,14 @@ document.getElementById("sign-out").addEventListener('click', e => {
     });
 });
 
-//function getFromDB() {
-//    onValue(ref(database, 'Date'), function(snapshot) {
-//        snapshot.forEach(function(ChildSnapshot) {
-//            var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
-//            var buttonNr = "button" + ChildSnapshot.key.substring(15);
-//            var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
-//            var deskNr = ChildSnapshot.key.substring(15);
-//            //console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val().Booker);
-//            //console.log(keyDate, deskNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
-//            if (keyDate == document.getElementById("datepicker").value) {
-//                    //document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
-//                    document.getElementById(buttonNr).style.backgroundColor = 'red';
-//            }
-//        })
-//    });
-//}
-
-    var selected_date = new Date(document.getElementById("datepicker").value);
-    var yyyy = selected_date.getFullYear();
-    var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-    var dd = selected_date.getDate();
+var selected_date = new Date(document.getElementById("datepicker").value);
+var yyyy = selected_date.getFullYear();
+var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+var dd = selected_date.getDate();
+console.log('Bookings/' + yyyy + '/' + mm + '/' + dd);
 
 function getFromDB() {
-    onValue(ref(database, 'Bookings/2022/2/23'), function(snapshot) {
+    onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
             //var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
             //var buttonNr = "button" + ChildSnapshot.key.substring(15);
@@ -134,8 +118,6 @@ function getFromDB() {
 }
     
 function saveToDB() {
-    //var id = document.getElementById("datepicker").value;
-
     var booker = window.userName; //document.getElementById("booking-menu-label-booker").innerHTML;
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     console.log(yyyy, mm, dd, booker, deskNr);
@@ -153,16 +135,16 @@ function deleteFromDB() {
 
 /*Setting the datepicker with todays date--------------------------------*/
 var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
-var yyyy = today.getFullYear();
-if(dd<10){
-  dd='0'+dd
+var today_dd = today.getDate();
+var today_mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+var today_yyyy = today.getFullYear();
+if(today_dd < 10){
+  today_dd = '0' + today_dd
 } 
-if(mm<10){
-  mm='0'+mm
-} 
-today = yyyy+'-'+mm+'-'+dd;
+if(today_mm < 10){
+  today_mm = '0' + mm
+}
+today = today_yyyy + '-' + today_mm + '-' + today_dd;
 document.getElementById("datepicker").setAttribute("value", today);
 setTimeout(getFromDB,500);
 /* ---------------------------------------------------------------------*/
