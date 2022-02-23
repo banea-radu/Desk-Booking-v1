@@ -118,7 +118,7 @@ function getFromDB() {
             //var buttonNr = "button" + ChildSnapshot.key.substring(15);
             //var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
             //var deskNr = ChildSnapshot.key.substring(15);
-            console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val);
+            console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val().Booker);
             //console.log(keyDate, deskNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
             //if (keyDate == document.getElementById("datepicker").value) {
                     //document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
