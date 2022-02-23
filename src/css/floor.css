@@ -59,7 +59,7 @@ img {
 }
 
 #refresh {
-    background: url('/src/images/refresh.svg') no-repeat center center / contain;
+    background: url('/DeBo/src/images/refresh.svg') no-repeat center center / contain;
     position: fixed;
     background-color:rgb(210,210,210,0.9);
     top: 9.5%;
