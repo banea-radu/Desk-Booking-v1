@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DeBo</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/src/css/floor.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="DeBo">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-57x57.png" sizes="57x57">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-60x60.png" sizes="60x60">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-72x72.png" sizes="72x72">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-76x76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-114x114.png" sizes="114x114">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-144x144.png" sizes="144x144">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-180x180.png" sizes="180x180">
+    <meta name="msapplication-TileImage" content="/src/images/icons/app-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#fff">
+    <meta name="theme-color" content="#3f51b5">
+</head>
+<body>
+<div id="modal-loader" class="modal-loader modal">
+    <div id="loader"></div>
+</div>
+<div id="modal-login" class="modal-login modal">
+    <div id="login-menu" class="modal-content-login-menu modal-content">
+        <br>
+        <br>
+        <p >DeBo Login Window</p>
+        <br>
+        <br>
+        <div class="form-group">
+            <label class="text-allign-left" for="email">&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEmail:</label>
+            <input type="text" class="login-menu-input-field" id="txtEmail" name="email">
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="text-allign-left" for="pwd">Password:</label>
+            <input type="password" class="login-menu-input-field" id="txtPassword" name="password">
+        </div>
+        <br>
+        <button type="submit" class="booking-menu-buttons" id="btnLogin">Login</button>
+        <!-- <button type="submit" class="btn btn-primary shadow" id="btnSignup">Signup</button> -->
+    </div>
+</div>
+
+<div>
+<div onclick="void(0);"> <!-- Special container created for Safari windowonclick event fix -->
+    <div class="FloorPlan-container">
+        <img src="/src/images/main-image-shrinked.jpg" alt="Floor Plan">
+        <div class="burgermenu-container" id="button-burger-menu">
+            <svg width="100%" height="100%">>
+                <rect x="25%" y="30%" width="50%" height="10%" rx="12%"></rect>
+                <rect x="25%" y="45%" width="50%" height="10%" rx="12%"></rect>
+                <rect x="25%" y="60%" width="50%" height="10%" rx="12%"></rect>
+            </svg>
+        </div>
+        <div id="refresh"></div>
+        <button class="button-desk button-desk1" id="button1">1</button>
+        <button class="button-desk button-desk2" id="button2">2</button>
+        <button class="button-desk button-desk3" id="button3">3</button>
+        <button class="button-desk button-desk4" id="button4">4</button>
+        <button class="button-desk button-desk5" id="button5">5</button>
+        <button class="button-desk button-desk6" id="button6">6</button>
+        <button class="button-desk button-desk7" id="button7">7</button>
+        <button class="button-desk button-desk8" id="button8">8</button>
+        <button class="button-desk button-desk9" id="button9">9</button>
+        <button class="button-desk button-desk10" id="button10">10</button>
+        <button class="button-desk button-desk11" id="button11">11</button>
+        <button class="button-desk button-desk12" id="button12">12</button>
+        <button class="button-desk button-desk13" id="button13">13</button>
+        <button class="button-desk button-desk14" id="button14">14</button>
+        <button class="button-desk button-desk15" id="button15">15</button>
+        <button class="button-desk button-desk16" id="button16">16</button>
+        <button class="button-desk button-desk17" id="button17">17</button>
+        <button class="button-desk button-desk18" id="button18">18</button>
+        <button class="button-desk button-desk19" id="button19">19</button>
+        <button class="button-desk button-desk20" id="button20">20</button>
+        <button class="button-desk button-desk21" id="button21">21</button>
+        <button class="button-desk button-desk22" id="button22">22</button>
+        <button class="button-desk button-desk23" id="button23">23</button>
+        <button class="button-desk button-desk24" id="button24">24</button>
+        <button class="button-desk button-desk25" id="button25">25</button>
+        <button class="button-desk button-desk26" id="button26">26</button>
+        <button class="button-desk button-desk27" id="button27">27</button>
+        <button class="button-desk button-desk28" id="button28">28</button>
+        <button class="button-desk button-desk29" id="button29">29</button>
+        <button class="button-desk button-desk30" id="button30">30</button>
+        <button class="button-desk button-desk31" id="button31">31</button>
+        <button class="button-desk button-desk32" id="button32">32</button>
+        <button class="button-desk button-desk33" id="button33">33</button>
+        <button class="button-desk button-desk34" id="button34">34</button>
+        <button class="button-desk button-desk35" id="button35">35</button>
+        <button class="button-desk button-desk36" id="button36">36</button>
+        <button class="button-desk button-desk37" id="button37">37</button>
+        <button class="button-desk button-desk38" id="button38">38</button>
+        <button class="button-desk button-desk39" id="button39">39</button>
+        <button class="button-desk button-desk40" id="button40">40</button>
+        <button class="button-desk button-desk41" id="button41">41</button>
+        <button class="button-desk button-desk42" id="button42">42</button>
+        <button class="button-desk button-desk43" id="button43">43</button>
+        <button class="button-desk button-desk44" id="button44">44</button>
+        <button class="button-desk button-desk45" id="button45">45</button>
+        <button class="button-desk button-desk46" id="button46">46</button>
+        <button class="button-desk button-desk47" id="button47">47</button>
+        <button class="button-desk button-desk48" id="button48">48</button>
+        <button class="button-desk button-desk49" id="button49">49</button>
+        <button class="button-desk button-desk50" id="button50">50</button>
+        <button class="button-desk button-desk51" id="button51">51</button>
+        <button class="button-desk button-desk52" id="button52">52</button>
+        <button class="button-desk button-desk53" id="button53">53</button>
+        <button class="button-desk button-desk54" id="button54">54</button>
+        <button class="button-desk button-desk55" id="button55">55</button>
+        <button class="button-desk button-desk56" id="button56">56</button>
+        <input type="date" id="datepicker" class="datepicker" min="2021-01-01" max="2030-12-31">
+    </div>
+    <div id="modal-sidebar" class="modal-sidebar modal">
+        <div id="sidebar" class="modal-content-sidebar modal-content">
+            <p><a href='#'>Profile</a></p>
+            <hr>
+            <p><a href='#'>Desk Booking</a></p>
+            <p><a href='#'>Bookings</a></p>
+            <hr>
+            <p><a id="sign-out" href='#'>Sign-Out</a></p>
+        </div>
+    </div>
+    <div id="modal-booking" class="modal-booking modal">
+        <div id="booking-menu" class="modal-content-booking-menu modal-content">
+            <p id="booking-menu-label-desk-number">Desk Number 00</p>
+            <div id="booking-menu-circle">Booker</div>
+            <p id="booking-menu-label-booker">Booker Name</p>
+            <button class="booking-menu-buttons" id="button-booking-book">Book</button>
+            <button class="booking-menu-buttons" id="button-booking-close">Close</button>
+        </div>
+    </div>
+</div>
+</div>
+<script type="module" src="/src/js/app.js"></script>
+</body>
+</html>

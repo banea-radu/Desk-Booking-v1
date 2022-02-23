@@ -1,0 +1,507 @@
+body { /*this was used to get rid of the white space/paddings from left and top of the screen*/
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+
+#loader {
+    z-index: 999;
+    position: fixed; /* centering horizontally requires the following 3 properties*/
+        left:0;
+        right:0;
+        margin: auto;
+        top: 45%;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.FloorPlan-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+
+img {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.burgermenu-container {
+    position: fixed;
+    background-color:rgb(210,210,210,0.9);
+    top: 3%;
+    margin-left: 3%;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 50%;
+    width: 8vw;
+    height: 8vw;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 15px;
+    z-index: 1;
+}
+
+#refresh {
+    background: url('/src/images/refresh.svg') no-repeat center center / contain;
+    position: fixed;
+    background-color:rgb(210,210,210,0.9);
+    top: 9.5%;
+    margin-left: 3%;
+    max-width: 70px;
+    max-height: 70px;
+    border-radius: 50%;
+    width: 8vw;
+    height: 8vw;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 0px 15px;
+    z-index: 1;
+}
+
+.button-desk {
+    position: absolute;
+    background-color: green;
+    width: min(11vw,110px);
+    height: min(11vw,110px);
+    padding:0;
+    border-radius: 50%;
+    border: 1px solid black;
+    text-align: center;
+    font-size: min(7vw,70px);
+    cursor: pointer;
+    color: black;
+    z-index: 0;
+}
+
+.button-desk1 {
+    top: 89.00%;
+    left: 84.00%;
+}
+
+.button-desk2 {
+    top: 82.50%;
+    left: 84.00%;
+}
+
+.button-desk3 {
+    top: 72.00%;
+    left: 5.00%;
+}
+
+.button-desk4 {
+    top: 72.00%;
+    left: 18.50%;
+}
+
+.button-desk5 {
+    top: 72.00%;
+    left: 31.75%;
+}
+
+.button-desk6 {
+    top: 72.00%;
+    left: 71.00%;
+}
+
+.button-desk7 {
+    top: 72.00%;
+    left: 84.00%;
+}
+
+.button-desk8 {
+    top: 65.50%;
+    left: 5.00%;
+}
+
+.button-desk9 {
+    top: 65.50%;
+    left: 18.50%;
+}
+
+.button-desk10 {
+    top: 65.50%;
+    left: 31.75%;
+}
+
+.button-desk11 {
+    top: 65.50%;
+    left: 71.00%;
+}
+
+.button-desk12 {
+    top: 65.50%;
+    left: 84.00%;
+}
+
+.button-desk13 {
+    top: 59.00%;
+    left: 5.00%;
+}
+
+.button-desk14 {
+    top: 59.00%;
+    left: 18.50%;
+}
+
+.button-desk15 {
+    top: 59.00%;
+    left: 31.75%;
+}
+
+.button-desk16 {
+    top: 59.00%;
+    left: 71.00%;
+}
+
+.button-desk17 {
+    top: 59.00%;
+    left: 84.00%;
+}
+
+.button-desk18 {
+    top: 52.50%;
+    left: 5.00%;
+}
+
+.button-desk19 {
+    top: 52.50%;
+    left: 18.50%;
+}
+
+.button-desk20 {
+    top: 52.50%;
+    left: 31.75%;
+}
+
+.button-desk21 {
+    top: 52.50%;
+    left: 71.00%;
+}
+
+.button-desk22 {
+    top: 52.50%;
+    left: 84.00%;
+}
+
+.button-desk23 {
+    top: 46.00%;
+    left: 5.00%;
+}
+
+.button-desk24 {
+    top: 46.00%;
+    left: 18.50%;
+}
+
+.button-desk25 {
+    top: 46.00%;
+    left: 31.75%;
+}
+
+.button-desk26 {
+    top: 46.00%;
+    left: 71.00%;
+}
+
+.button-desk27 {
+    top: 46.00%;
+    left: 84.00%;
+}
+
+.button-desk28 {
+    top: 39.50%;
+    left: 5.00%;
+}
+
+.button-desk29 {
+    top: 39.50%;
+    left: 18.50%;
+}
+
+.button-desk30 {
+    top: 39.50%;
+    left: 31.75%;
+}
+
+.button-desk31 {
+    top: 39.50%;
+    left: 71.00%;
+}
+
+.button-desk32 {
+    top: 39.50%;
+    left: 84.00%;
+}
+
+.button-desk33 {
+    top: 33.00%;
+    left: 5.00%;
+}
+
+.button-desk34 {
+    top: 33.00%;
+    left: 18.50%;
+}
+
+.button-desk35 {
+    top: 33.00%;
+    left: 31.75%;
+}
+
+.button-desk36 {
+    top: 33.00%;
+    left: 71.00%;
+}
+
+.button-desk37 {
+    top: 33.00%;
+    left: 84.00%;
+}
+
+.button-desk38 {
+    top: 26.50%;
+    left: 5.00%;
+}
+
+.button-desk39 {
+    top: 26.50%;
+    left: 18.50%;
+}
+
+.button-desk40 {
+    top: 26.50%;
+    left: 31.75%;
+}
+
+.button-desk41 {
+    top: 26.50%;
+    left: 71.00%;
+}
+
+.button-desk42 {
+    top: 26.50%;
+    left: 84.00%;
+}
+
+.button-desk43 {
+    top: 20.00%;
+    left: 5.00%;
+}
+
+.button-desk44 {
+    top: 20.00%;
+    left: 18.50%;
+}
+
+.button-desk45 {
+    top: 20.00%;
+    left: 31.75%;
+}
+
+.button-desk46 {
+    top: 20.00%;
+    left: 71.00%;
+}
+
+.button-desk47 {
+    top: 20.00%;
+    left: 84.00%;
+}
+
+.button-desk48 {
+    top: 13.50%;
+    left: 5.00%;
+}
+
+.button-desk49 {
+    top: 13.50%;
+    left: 18.50%;
+}
+
+.button-desk50 {
+    top: 13.50%;
+    left: 31.75%;
+}
+
+.button-desk51 {
+    top: 13.50%;
+    left: 71.00%;
+}
+
+.button-desk52 {
+    top: 13.50%;
+    left: 84.00%;
+}
+
+.button-desk53 {
+    top: 7.00%;
+    left: 71.00%;
+}
+
+.button-desk54 {
+    top: 7.00%;
+    left: 84.00%;
+}
+
+.button-desk55 {
+    top: 0.50%;
+    left: 71.00%;
+}
+
+.button-desk56 {
+    top: 0.50%;
+    left: 84.00%;
+}
+
+.datepicker {
+    z-index: 98;
+        position: fixed; /* centering horizontally requires the following 3 properties*/
+        left:0;
+        right:0;
+        margin: auto;
+        bottom: 3vh;
+    background-color:rgb(240,240,240,0.8);
+    width: 140px;
+    border: 1px solid rgb(255,64,129);
+    font-size: 15px;
+    text-align: center;
+    color: black;
+}
+
+.modal {
+    position: fixed; /* Stay in place */
+    z-index: 99; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; /* Full height */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    transition: transform 0.15s;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    transition: transform 0.2s;
+}
+
+.modal-loader {
+    transform: translateX(+0%);
+    /*transform: translateX(0%);     */
+}
+
+.modal-login {
+    transform: translateX(+200%);
+    /*transform: translateX(0%);     */
+}
+
+.modal-sidebar {
+    transform: translateX(-100%);    
+}
+
+.modal-booking {
+    transform: translateY(200%);   
+}
+
+.modal-content-sidebar {
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 100%;
+    width: 40%;
+    font-size: min(5vw,50px);
+    transform: translateX(-100%);
+}
+
+.modal-content-booking-menu {
+    position: absolute; /* centering horizontally requires the following 3 properties*/
+        left:0;
+        right:0;
+        margin: auto;
+    text-align: center;
+    bottom: 10vh;
+    height: min(78vh,110vw);
+    width: 70vw;
+    max-width: 700px;
+    font-size: min(5vh,5vw);
+    transform: translateY(200%);
+    border-radius: 15px;
+    padding: 1px;
+}
+
+.modal-content-login-menu {
+    position: absolute; /* centering horizontally requires the following 3 properties*/
+        left:0;
+        right:0;
+        margin: auto;
+    text-align: center;
+    bottom: 10vh;
+    height: min(78vh,110vw);
+    width: 70vw;
+    max-width: 700px;
+    font-size: min(4vh,4vw);
+    transform: translateX(200%);
+    /*transform: translateX(0%);*/
+    border-radius: 15px;
+    padding: 1px;
+}
+
+#booking-menu-circle {
+    position: relative;
+    width: min(65vw,40vh);
+    height: min(65vw,40vh);
+    margin: auto;
+    line-height: min(65vw,40vh);
+    border-radius: 50%;
+    color: black;
+    text-align: center;
+    font-size: min(20vw,10vh);
+    background: pink;
+}
+
+.booking-menu-buttons {
+    position: relative;
+    background-color: LightBlue;
+    width: 25vw;
+    max-width: 300px;
+    height: min(7vw,4vh);
+    border-radius: 10px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: min(4vw,3vh);
+    cursor: pointer;
+    color: black;
+}
+
+.login-menu-input-field {
+    position: relative;
+    width: 45vw;
+    max-width: 300px;
+    height: min(7vw,4vh);
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: min(3vw,2vh);
+    cursor: pointer;
+    color: black;
+}
+
+.text-allign-left {
+    width: 15vw;
+    height: min(7vw,4vh);
+    text-align: left;
+}
