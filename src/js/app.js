@@ -112,13 +112,13 @@ document.getElementById("sign-out").addEventListener('click', e => {
 //}
 
 function getFromDB() {
-    onValue(ref(database, 'Bookings'), function(snapshot) {
+    onValue(ref(database, 'Bookings/2022/2/23'), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
             //var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
             //var buttonNr = "button" + ChildSnapshot.key.substring(15);
             //var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
             //var deskNr = ChildSnapshot.key.substring(15);
-            console.log(ChildSnapshot.key);
+            console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val);
             //console.log(keyDate, deskNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
             //if (keyDate == document.getElementById("datepicker").value) {
                     //document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
