@@ -111,6 +111,11 @@ document.getElementById("sign-out").addEventListener('click', e => {
 //    });
 //}
 
+    var selected_date = new Date(document.getElementById("datepicker").value);
+    var yyyy = selected_date.getFullYear();
+    var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var dd = selected_date.getDate();
+
 function getFromDB() {
     onValue(ref(database, 'Bookings/2022/2/23'), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
@@ -130,10 +135,7 @@ function getFromDB() {
     
 function saveToDB() {
     //var id = document.getElementById("datepicker").value;
-    var selected_date = new Date(document.getElementById("datepicker").value);
-    var yyyy = selected_date.getFullYear();
-    var mm = selected_date.getMonth()+1; //January is 0 so need to add 1 to make it 1!
-    var dd = selected_date.getDate();
+
     var booker = window.userName; //document.getElementById("booking-menu-label-booker").innerHTML;
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     console.log(yyyy, mm, dd, booker, deskNr);
