@@ -142,7 +142,7 @@ if(today_dd < 10){
   today_dd = '0' + today_dd
 } 
 if(today_mm < 10){
-  today_mm = '0' + mm
+  today_mm = '0' + today_mm
 }
 today = today_yyyy + '-' + today_mm + '-' + today_dd;
 document.getElementById("datepicker").setAttribute("value", today);
