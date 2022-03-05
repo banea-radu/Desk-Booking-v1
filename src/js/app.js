@@ -29,7 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
 const auth = getAuth();
-console.log('Firebase init completed!');
+//console.log('Firebase init completed!');
 
 //setTimeout(testIfUserLogged,3000);
 testIfUserLogged();
@@ -104,12 +104,12 @@ function getFromDB() {
             //var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
             var buttonNr = "button" + ChildSnapshot.key.substring(5);
             var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
-            var deskNr = ChildSnapshot.key.substring(5);
-            console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val().Booker);
-            //console.log(keyDate, deskNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
+            //var deskNr = ChildSnapshot.key.substring(5);
+            //console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val().Booker);
+            console.log(buttonNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
             //if (keyDate == document.getElementById("datepicker").value) {
-                document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
-                document.getElementById(buttonNr).style.backgroundColor = 'red';
+            //    document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
+            //    document.getElementById(buttonNr).style.backgroundColor = 'red';
             //}
         })
     });
