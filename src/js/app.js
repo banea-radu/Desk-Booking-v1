@@ -95,6 +95,10 @@ document.getElementById("sign-out").addEventListener('click', e => {
 });
 
 function getFromDB() {
+    var selected_date = new Date(document.getElementById("datepicker").value);
+    var yyyy = selected_date.getFullYear();
+    var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var dd = selected_date.getDate();
     onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
             //var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
@@ -116,10 +120,10 @@ function saveToDB() {
     var yyyy = selected_date.getFullYear();
     var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
     var dd = selected_date.getDate();
-    console.log('Bookings/' + yyyy + '/' + mm + '/' + dd);
+    //console.log('Bookings/' + yyyy + '/' + mm + '/' + dd);
     var booker = window.userName; //document.getElementById("booking-menu-label-booker").innerHTML;
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
-    console.log(yyyy, mm, dd, booker, deskNr);
+    //console.log(yyyy, mm, dd, booker, deskNr);
     set(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + "/Desk" + deskNr ), {
         Booker: booker
     });
