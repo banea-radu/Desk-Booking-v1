@@ -106,7 +106,7 @@ function getFromDB() {
             var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
             //var deskNr = ChildSnapshot.key.substring(15);
             //console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val().Booker);
-            console.log(buttonNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
+            //console.log(buttonNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
             //if (keyDate == document.getElementById("datepicker").value) {
             //    document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                 document.getElementById(buttonNr).style.backgroundColor = 'red';
@@ -130,10 +130,15 @@ function saveToDB() {
 }
 
 function deleteFromDB() {
-    var keyDate = document.getElementById("datepicker").value;
+    //var keyDate = document.getElementById("datepicker").value;
+    var selected_date = new Date(document.getElementById("datepicker").value);
+    var yyyy = selected_date.getFullYear();
+    var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var dd = selected_date.getDate();
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     //console.log(keyDate + '-Desk' + deskNr);
-    remove(ref(database, 'Date/' + keyDate + "-Desk" + deskNr ));
+    //remove(ref(database, 'Date/' + keyDate + "-Desk" + deskNr ));
+    remove(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + "Desk" + deskNr ));
 }
 
 /*Setting the datepicker with todays date--------------------------------*/
