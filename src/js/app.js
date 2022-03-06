@@ -138,7 +138,7 @@ function deleteFromDB() {
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     //console.log(keyDate + '-Desk' + deskNr);
     //remove(ref(database, 'Date/' + keyDate + "-Desk" + deskNr ));
-    remove(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + "Desk" + deskNr ));
+    remove(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/' + "Desk" + deskNr ));
 }
 
 /*Setting the datepicker with todays date--------------------------------*/
