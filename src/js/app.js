@@ -176,7 +176,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
         var DeskNumber = event.target.id.substring(6);
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
         //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
-        var DeskStatus = event.target.id.style.backgroundColor;
+        var DeskStatus = event.target.style.backgroundColor;
         //console.log(DeskNumber);
         if (DeskStatus == "red") {
             document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
