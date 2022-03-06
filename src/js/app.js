@@ -196,7 +196,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
                 var bookerInitials = ChildSnapshot.val().Booker.split(" ");
                 document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                 document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
-            })
+            });
         }
         else {
             document.getElementById("booking-menu-circle").innerHTML = "Free";
