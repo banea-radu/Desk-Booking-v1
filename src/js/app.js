@@ -124,7 +124,7 @@ function saveToDB() {
     var booker = window.userName; //document.getElementById("booking-menu-label-booker").innerHTML;
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     //console.log(yyyy, mm, dd, booker, deskNr);
-    set(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + "/Desk" + deskNr ), {
+    set(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + deskNr ), {
         Booker: booker
     });
 }
@@ -138,7 +138,7 @@ function deleteFromDB() {
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     //console.log(keyDate + '-Desk' + deskNr);
     //remove(ref(database, 'Date/' + keyDate + "-Desk" + deskNr ));
-    remove(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/' + "Desk" + deskNr ));
+    remove(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + deskNr ));
 }
 
 /*Setting the datepicker with todays date--------------------------------*/
@@ -192,7 +192,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
             var dd = selected_date.getDate();
             //get booker name
-            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
+            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd+ '/Desk' + DeskNumber), function(snapshot) {
                 snapshot.forEach(function(ChildSnapshot) {
                     var bookerInitials = ChildSnapshot.val().Booker.split(" ");
                     document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
