@@ -175,25 +175,19 @@ document.querySelectorAll('.button-desk').forEach(item => {
     item.addEventListener('click', event => {
         var DeskNumber = event.target.id.substring(6);
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
-        var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
+        //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
+        var DeskStatus = event.target.id.style.backgroundColor
         //console.log(DeskNumber);
-        if (DeskStatus != DeskNumber) {
+        if (DeskStatus == "red") {
             document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
             document.getElementById("booking-menu-circle").style.backgroundColor = "red";
             document.getElementById("button-booking-book").innerText = "Unbook";
             //get booker name
-            onValue(ref(database, 'Date'), function(snapshot) {
+            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
                 snapshot.forEach(function(ChildSnapshot) {
-                    var keydate = ChildSnapshot.key.substring(0,10);
-                    if (keydate == document.getElementById("datepicker").value) {
-                        var DeskNrDb = ChildSnapshot.key.substring(15);
-                        if (DeskNrDb == DeskNumber) {
-                            document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
-                            //console.log(DeskNumber, DeskNrDb);
-                        }
-                    }
-                })
-            });
+                    document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
+                }
+            })
         }
         else {
             document.getElementById("booking-menu-circle").innerHTML = "Free";
