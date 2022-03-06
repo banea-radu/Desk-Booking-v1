@@ -192,7 +192,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
             var dd = selected_date.getDate();
             //get booker name and initials
-            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + DeskNumber), function(snapshot) {
+            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + DeskNumber), function(ChildSnapshot) {
                 var bookerInitials = ChildSnapshot.val().Booker.split(" ");
                 document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                 document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
