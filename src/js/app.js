@@ -103,7 +103,7 @@ function getFromDB() {
         snapshot.forEach(function(ChildSnapshot) {
             //var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
             var buttonNr = "button" + ChildSnapshot.key.substring(4);
-            var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
+            //var bookerInitials = ChildSnapshot.val().Booker.split(" "); // ChildSnapshot.val().Booker = 'Booker' field value from keys
             //var deskNr = ChildSnapshot.key.substring(15);
             //console.log(ChildSnapshot.key + ' - ' + ChildSnapshot.val().Booker);
             //console.log(buttonNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
@@ -184,7 +184,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
         var DeskStatus = event.target.style.backgroundColor;
         //console.log(DeskNumber);
         if (DeskStatus == "red") {
-            document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
+            //document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
             document.getElementById("booking-menu-circle").style.backgroundColor = "red";
             document.getElementById("button-booking-book").innerText = "Unbook";
             var selected_date = new Date(document.getElementById("datepicker").value);
@@ -194,6 +194,8 @@ document.querySelectorAll('.button-desk').forEach(item => {
             //get booker name
             onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
                 snapshot.forEach(function(ChildSnapshot) {
+                    var bookerInitials = ChildSnapshot.val().Booker.split(" ");
+                    document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                     document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
                 })
             })
