@@ -191,8 +191,9 @@ document.querySelectorAll('.button-desk').forEach(item => {
             var yyyy = selected_date.getFullYear();
             var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
             var dd = selected_date.getDate();
-            //get booker name
-            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd+ '/Desk' + DeskNumber), function(snapshot) {
+            //get booker name and initials
+            console.log('Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + DeskNumber);
+            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + DeskNumber), function(snapshot) {
                 snapshot.forEach(function(ChildSnapshot) {
                     var bookerInitials = ChildSnapshot.val().Booker.split(" ");
                     document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
