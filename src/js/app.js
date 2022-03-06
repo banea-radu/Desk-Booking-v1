@@ -190,7 +190,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
                 snapshot.forEach(function(ChildSnapshot) {
                     document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
-                }
+                })
             })
         }
         else {
