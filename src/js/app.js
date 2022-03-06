@@ -176,12 +176,16 @@ document.querySelectorAll('.button-desk').forEach(item => {
         var DeskNumber = event.target.id.substring(6);
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
         //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
-        var DeskStatus = event.target.id.style.backgroundColor
+        var DeskStatus = event.target.id.style.backgroundColor;
         //console.log(DeskNumber);
         if (DeskStatus == "red") {
             document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
             document.getElementById("booking-menu-circle").style.backgroundColor = "red";
             document.getElementById("button-booking-book").innerText = "Unbook";
+            var selected_date = new Date(document.getElementById("datepicker").value);
+            var yyyy = selected_date.getFullYear();
+            var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+            var dd = selected_date.getDate();
             //get booker name
             onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
                 snapshot.forEach(function(ChildSnapshot) {
