@@ -101,14 +101,13 @@ var deskTotal = 56; //total number of desks
             });
 	});
         UserLogged.then(
-		    function(value) {getFromDB(value);},
-  		    function(error) {getFromDB(error);}
-	    );
+		function(value) {getFromDB(value);},
+  		function(error) {getFromDB(error);}
+	);
     }
 
     function getFromDB(User) {
-        console.log(document.getElementById('SideBarUserName').innerHTML);
-        console.log(User);
+        //console.log(User);
         var selected_date = new Date(document.getElementById("datepicker").value);
         var yyyy = selected_date.getFullYear();
         var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
@@ -116,7 +115,7 @@ var deskTotal = 56; //total number of desks
         onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
             snapshot.forEach(function(ChildSnapshot) {
                 var buttonNr = "button" + ChildSnapshot.key.substring(4);
-                if (ChildSnapshot.val().Booker == window.username) {
+                if (ChildSnapshot.val().Booker == User) {
                     document.getElementById(buttonNr).style.backgroundColor = 'blue';
                     }
                 else {
