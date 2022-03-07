@@ -180,7 +180,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
         //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
         var DeskStatus = event.target.style.backgroundColor;
         //console.log(DeskNumber);
-        if (DeskStatus == "red") {
+        if (DeskStatus != "green") {
             //document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
             document.getElementById("button-booking-book").innerText = "Unbook";
             var selected_date = new Date(document.getElementById("datepicker").value);
