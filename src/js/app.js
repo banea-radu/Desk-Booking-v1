@@ -216,7 +216,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             let userBookings = 0;
             for (let i = 1; i <= deskTotal; i++) {
                 if (document.getElementById('button' + i).style.backgroundColor == 'blue') {
-                    let userBookings = userBookings + 1;
+                    userBookings = userBookings + 1;
                 }
             }
             console.log(deskTotal, userBookings);
