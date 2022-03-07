@@ -46,6 +46,7 @@ function testIfUserLogged() {
                         window.userName = ChildSnapshot.val().Name;
                         console.log('User logged: '+ window.userName);
                         document.getElementById("modal-loader").style.display = "none";
+                        getFromDB.call();
                     }
                 })
             });
@@ -95,6 +96,7 @@ document.getElementById("sign-out").addEventListener('click', e => {
 });
 
 function getFromDB() {
+    console.log(window.userName);
     var selected_date = new Date(document.getElementById("datepicker").value);
     var yyyy = selected_date.getFullYear();
     var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
@@ -152,7 +154,7 @@ if(today_mm < 10){
 }
 today = today_yyyy + '-' + today_mm + '-' + today_dd;
 document.getElementById("datepicker").setAttribute("value", today);
-setTimeout(getFromDB,500);
+//setTimeout(getFromDB,500);
 /* ---------------------------------------------------------------------*/
 
 document.getElementById("button-burger-menu").addEventListener('click', function(event) {
