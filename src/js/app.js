@@ -32,7 +32,7 @@ const auth = getAuth();
 //console.log('Firebase init completed!');
 
 //setTimeout(testIfUserLogged,3000);
-testIfUserLogged();
+//testIfUserLogged();
 function testIfUserLogged() {
     //const user = auth.currentUser;
     onAuthStateChanged(auth, (user) => {
@@ -299,5 +299,6 @@ function changeDate() {
         document.getElementById('button' + i).style.backgroundColor = 'green';
     }
     //setTimeout(getFromDB,500);
+    console.log('changeDate Started as default when setting today date');
     setTimeout(function() { document.getElementById("modal-loader").style.display = "none"; } ,800);
 }
