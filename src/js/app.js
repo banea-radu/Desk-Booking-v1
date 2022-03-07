@@ -179,7 +179,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
         //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
         var DeskStatus = event.target.style.background;
-        //console.log(DeskNumber);
+        console.log(DeskStatus);
         if (DeskStatus != "green") {
             //document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
             document.getElementById("button-booking-book").innerText = "Unbook";
