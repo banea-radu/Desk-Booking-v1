@@ -35,31 +35,34 @@ var deskTotal = 56; //total number of desks
     const database = getDatabase();
     const auth = getAuth();
     //console.log('Firebase init completed!');
-    testIfUserLogged().then(getFromDB());
 
     function testIfUserLogged() {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User 
-                onValue(ref(database, 'User'), function(snapshot) {
-                    snapshot.forEach(function(ChildSnapshot) {
-                        var userUID = ChildSnapshot.key;
-                        if (userUID == user.uid) {
-                            window.userName = ChildSnapshot.val().Name;
-                            console.log('User logged: '+ window.userName);
-                            document.getElementById("modal-loader").style.display = "none";
-                        }
-                    })
-                });
-            }
-            else {
-                // User is signed out
-                console.log('No user signed in!');
-                openLoginWindow.call();
-            }
+        return new Promise(function(resolve) {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in, see docs for a list of available properties
+                    // https://firebase.google.com/docs/reference/js/firebase.User 
+                    onValue(ref(database, 'User'), function(snapshot) {
+                        snapshot.forEach(function(ChildSnapshot) {
+                            var userUID = ChildSnapshot.key;
+                            if (userUID == user.uid) {
+                                window.userName = ChildSnapshot.val().Name;
+                                console.log('User logged: '+ window.userName);
+                                document.getElementById("modal-loader").style.display = "none";
+                            }
+                        })
+                    });
+                }
+                else {
+                    // User is signed out
+                    console.log('No user signed in!');
+                    openLoginWindow.call();
+                }
+            });
         });
     }
+
+    testIfUserLogged().then(getFromDB);
 
 //Get Elements for login
     const txtEmail = document.getElementById("txtEmail");
