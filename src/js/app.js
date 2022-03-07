@@ -199,10 +199,12 @@ document.querySelectorAll('.button-desk').forEach(item => {
                         document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                         document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
                         if (ChildSnapshot.val().Booker != window.userName) {
-                            document.getElementById("button-booking-book").disabled = true
+                            document.getElementById("button-booking-book").disabled = true;
+                            document.getElementById"button-booking-book").style.background = 'LightBlue';
                         }
                         else {
-                            document.getElementById("button-booking-book").disabled = false
+                            document.getElementById("button-booking-book").disabled = false;
+                            document.getElementById"button-booking-book").style.background = '#cccccc';
                         }
                     }
                 })
