@@ -88,6 +88,7 @@ var deskTotal = 56; //total number of desks
                                 window.userName = ChildSnapshot.val().Name;
                                 console.log('User logged: '+ window.userName);
                                 document.getElementById("modal-loader").style.display = "none";
+                                document.getElementById("SideBarUserName").innerHTML = window.userName;
                             }
                         })
                     });
@@ -103,7 +104,7 @@ var deskTotal = 56; //total number of desks
     }
 
     function getFromDB() {
-        console.log(window.userName);
+        console.log(document.getElementById('SideBarUserName').innerHTML);
         var selected_date = new Date(document.getElementById("datepicker").value);
         var yyyy = selected_date.getFullYear();
         var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
