@@ -35,7 +35,7 @@ var deskTotal = 56; //total number of desks
     const database = getDatabase();
     const auth = getAuth();
     //console.log('Firebase init completed!');
-    testIfUserLogged();
+    testIfUserLogged().then(getFromDB());
 
     function testIfUserLogged() {
         onAuthStateChanged(auth, (user) => {
@@ -59,7 +59,7 @@ var deskTotal = 56; //total number of desks
                 openLoginWindow.call();
             }
         });
-    }.then(getFromDB())
+    }
 
 //Get Elements for login
     const txtEmail = document.getElementById("txtEmail");
