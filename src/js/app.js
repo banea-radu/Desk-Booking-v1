@@ -52,14 +52,13 @@ var deskTotal = 56; //total number of desks
                         }
                     })
                 });
-                getFromDB.call();
             }
             else {
                 // User is signed out
                 console.log('No user signed in!');
                 openLoginWindow.call();
             }
-        });
+        }).then(getFromDB());
     }
 
 //Get Elements for login
