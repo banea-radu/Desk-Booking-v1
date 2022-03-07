@@ -99,29 +99,14 @@ function getFromDB() {
     var yyyy = selected_date.getFullYear();
     var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
     var dd = selected_date.getDate();
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            onValue(ref(database, 'User'), function(snapshot) {
-                snapshot.forEach(function(ChildSnapshot) {
-                    var userUID = ChildSnapshot.key;
-                    if (userUID == user.uid) {
-                        window.userName = ChildSnapshot.val().Name;
-                    }
-                })
-            });
-        }
-    });
-    console.log('Inside getFromDB after auth ' + window.userName);
     onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
             var buttonNr = "button" + ChildSnapshot.key.substring(4);
             if (ChildSnapshot.val().Booker == window.username) {
                 document.getElementById(buttonNr).style.backgroundColor = 'blue';
-                console.log('Child EQUAL - ', buttonNr, ' - ', ChildSnapshot.val().Booker,' - ', window.userName);
                 }
                 else {
                     document.getElementById(buttonNr).style.backgroundColor = 'red';
-                    console.log('Child NOT EQUAL - ', buttonNr, ' - ', ChildSnapshot.val().Booker,' - ', window.userName);
             }
         })
     });
@@ -311,6 +296,6 @@ function changeDate() {
         document.getElementById('button' + i).innerText = i;
         document.getElementById('button' + i).style.backgroundColor = 'green';
     }
-    setTimeout(getFromDB,500);
+    //setTimeout(getFromDB,500);
     setTimeout(function() { document.getElementById("modal-loader").style.display = "none"; } ,800);
 }
