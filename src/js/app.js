@@ -49,10 +49,10 @@ var deskTotal = 56; //total number of desks
                             window.userName = ChildSnapshot.val().Name;
                             console.log('User logged: '+ window.userName);
                             document.getElementById("modal-loader").style.display = "none";
-                            getFromDB.call();
                         }
                     })
                 });
+                getFromDB.call();
             }
             else {
                 // User is signed out
@@ -111,8 +111,8 @@ function getFromDB() {
             if (ChildSnapshot.val().Booker == window.username) {
                 document.getElementById(buttonNr).style.backgroundColor = 'blue';
                 }
-                else {
-                    document.getElementById(buttonNr).style.backgroundColor = 'red';
+            else {
+                document.getElementById(buttonNr).style.backgroundColor = 'red';
             }
         })
     });
