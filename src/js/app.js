@@ -58,8 +58,8 @@ var deskTotal = 56; //total number of desks
                 console.log('No user signed in!');
                 openLoginWindow.call();
             }
-        }).then(getFromDB());
-    }
+        });
+    }.then(getFromDB())
 
 //Get Elements for login
     const txtEmail = document.getElementById("txtEmail");
