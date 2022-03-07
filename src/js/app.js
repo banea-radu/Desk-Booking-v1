@@ -231,9 +231,11 @@ document.querySelectorAll('.button-desk').forEach(item => {
             console.log(deskTotal, userBookings);
             if (userBookings > 0) {
                 document.getElementById("button-booking-book").disabled = true;
+                document.getElementById("button-booking-book").style.background = '#cccccc';
             }
             else {
                 document.getElementById("button-booking-book").disabled = false;
+                document.getElementById("button-booking-book").style.background = 'LightBlue';
             }
         }
         document.getElementById("modal-booking").style.transform = "translateY(0)";
