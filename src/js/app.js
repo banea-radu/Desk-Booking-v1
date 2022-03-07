@@ -13,7 +13,6 @@ var deskTotal = 56; //total number of desks
     today = today_yyyy + '-' + today_mm + '-' + today_dd;
     document.getElementById("datepicker").setAttribute("value", today);
     //setTimeout(getFromDB,500);
-    testIfUserLogged();
 /*<-----------------------------------------------------------------------------*/
 
 /*DATABASE -------------------------------------------------------------------->*/
@@ -36,6 +35,7 @@ var deskTotal = 56; //total number of desks
     const database = getDatabase();
     const auth = getAuth();
     //console.log('Firebase init completed!');
+    testIfUserLogged();
 
     function testIfUserLogged() {
         onAuthStateChanged(auth, (user) => {
