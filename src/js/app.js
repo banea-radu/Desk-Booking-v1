@@ -109,7 +109,12 @@ function getFromDB() {
             //console.log(buttonNr, bookerInitials[0].substring(0,1)+ bookerInitials[1].substring(0,1));
             //if (keyDate == document.getElementById("datepicker").value) {
             //    document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
-                document.getElementById(buttonNr).style.backgroundColor = 'red';
+                if (ChildSnapshot.val().Booker == window.username) {
+                    document.getElementById(buttonNr).style.backgroundColor = 'blue';
+                }
+                else {
+                    document.getElementById(buttonNr).style.backgroundColor = 'red';
+                }
             //}
         })
     });
@@ -141,6 +146,7 @@ function deleteFromDB() {
     remove(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + deskNr ));
 }
 
+var deskTotal = 56; //total number of desks
 /*Setting the datepicker with todays date--------------------------------*/
 var today = new Date();
 var today_dd = today.getDate();
@@ -185,7 +191,6 @@ document.querySelectorAll('.button-desk').forEach(item => {
         //console.log(DeskNumber);
         if (DeskStatus == "red") {
             //document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
-            document.getElementById("booking-menu-circle").style.backgroundColor = "red";
             document.getElementById("button-booking-book").innerText = "Unbook";
             var selected_date = new Date(document.getElementById("datepicker").value);
             var yyyy = selected_date.getFullYear();
@@ -199,10 +204,12 @@ document.querySelectorAll('.button-desk').forEach(item => {
                         document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                         document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
                         if (ChildSnapshot.val().Booker != window.userName) {
+                            document.getElementById("booking-menu-circle").style.backgroundColor = "red";
                             document.getElementById("button-booking-book").disabled = true;
                             document.getElementById("button-booking-book").style.background = '#cccccc';
                         }
                         else {
+                            document.getElementById("booking-menu-circle").style.backgroundColor = "blue";
                             document.getElementById("button-booking-book").disabled = false;
                             document.getElementById("button-booking-book").style.background = 'LightBlue';
                         }
@@ -215,6 +222,13 @@ document.querySelectorAll('.button-desk').forEach(item => {
             document.getElementById("booking-menu-circle").style.backgroundColor = "green";
             document.getElementById("button-booking-book").innerText = "Book";
             document.getElementById("booking-menu-label-booker").innerHTML = "";
+            let userBookings = 0;
+            for (let i = 1; i <= deskTotal; i++) {
+                if (document.getElementById(buttonNr).style.backgroundColor == 'blue') {
+                    let userBookings = userBookings;
+                }
+            }
+            console.log(userBookings);
         }
         document.getElementById("modal-booking").style.transform = "translateY(0)";
         document.getElementById("booking-menu").style.transform = "translateY(0)";
@@ -277,7 +291,7 @@ document.getElementById('datepicker').addEventListener('change', function(event)
 
 function changeDate() {
     document.getElementById("modal-loader").style.display = "block";
-    var deskTotal = 56;
+    //var deskTotal = 56;
     for (let i = 1; i <= deskTotal; i++) {
         document.getElementById('button' + i).innerText = i;
         document.getElementById('button' + i).style.backgroundColor = 'green';
