@@ -94,12 +94,22 @@ document.getElementById("sign-out").addEventListener('click', e => {
     });
 });
 
-console.log('Before getFromDB: '+ window.userName);
 function getFromDB() {
     var selected_date = new Date(document.getElementById("datepicker").value);
     var yyyy = selected_date.getFullYear();
     var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
     var dd = selected_date.getDate();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            onValue(ref(database, 'User'), function(snapshot) {
+                snapshot.forEach(function(ChildSnapshot) {
+                    var userUID = ChildSnapshot.key;
+                    if (userUID == user.uid) {
+                        window.userName = ChildSnapshot.val().Name;
+                    }
+                })
+            });
+        }
     onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
             //var keyDate = ChildSnapshot.key.substring(0,10); // ChildSnapshot.key = keys from 'Database/Date/'
