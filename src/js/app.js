@@ -100,7 +100,7 @@ var deskTotal = 56; //total number of desks
                 }
             });
 	});
-        UserLoged.then(
+        UserLogged.then(
 		    function(value) {getFromDB(value);},
   		    function(error) {getFromDB(error);}
 	    );
