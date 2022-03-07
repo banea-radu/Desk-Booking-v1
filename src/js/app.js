@@ -73,10 +73,8 @@ var deskTotal = 56; //total number of desks
         });
     });
 
-    testIfUserLogged().then(getFromDB);
-
     function testIfUserLogged() {
-        return new Promise(function(resolve) {
+        let UserLogged = new Promise(function(myResolve, myReject) {
             onAuthStateChanged(auth, (user) => {
                 if (user) {
                     // User is signed in, see docs for a list of available properties
@@ -89,6 +87,7 @@ var deskTotal = 56; //total number of desks
                                 console.log('User logged: '+ window.userName);
                                 document.getElementById("modal-loader").style.display = "none";
                                 document.getElementById("SideBarUserName").innerHTML = window.userName;
+                                myResolve(window.userName);
                             }
                         })
                     });
@@ -97,14 +96,19 @@ var deskTotal = 56; //total number of desks
                     // User is signed out
                     console.log('No user signed in!');
                     openLoginWindow.call();
+                    myReject('No user signed in!');
                 }
             });
-            resolve();
-        });
+        );
+        UserLoged.then(
+		    function(value) {getFromDB(value);},
+  		    function(error) {getFromDB(error);}
+	    );
     }
 
-    function getFromDB() {
+    function getFromDB(User) {
         console.log(document.getElementById('SideBarUserName').innerHTML);
+        console.log(User);
         var selected_date = new Date(document.getElementById("datepicker").value);
         var yyyy = selected_date.getFullYear();
         var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
@@ -121,7 +125,9 @@ var deskTotal = 56; //total number of desks
             })
         });
     }
-    
+
+    testIfUserLogged(); // needs to be placed after the functions used are defined
+
 function saveToDB() {
     var selected_date = new Date(document.getElementById("datepicker").value);
     var yyyy = selected_date.getFullYear();
