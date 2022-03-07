@@ -94,6 +94,7 @@ document.getElementById("sign-out").addEventListener('click', e => {
     });
 });
 
+console.log('Before getFromDB: '+ window.userName);
 function getFromDB() {
     var selected_date = new Date(document.getElementById("datepicker").value);
     var yyyy = selected_date.getFullYear();
