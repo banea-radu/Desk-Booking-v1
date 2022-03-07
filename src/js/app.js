@@ -200,11 +200,11 @@ document.querySelectorAll('.button-desk').forEach(item => {
                         document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
                         if (ChildSnapshot.val().Booker != window.userName) {
                             document.getElementById("button-booking-book").disabled = true;
-                            document.getElementById("button-booking-book").style.background = 'LightBlue';
+                            document.getElementById("button-booking-book").style.background = '#cccccc';
                         }
                         else {
                             document.getElementById("button-booking-book").disabled = false;
-                            document.getElementById("button-booking-book").style.background = '#cccccc';
+                            document.getElementById("button-booking-book").style.background = 'LightBlue';
                         }
                     }
                 })
