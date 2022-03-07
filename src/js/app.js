@@ -36,34 +36,6 @@ var deskTotal = 56; //total number of desks
     const auth = getAuth();
     //console.log('Firebase init completed!');
 
-    function testIfUserLogged() {
-        return new Promise(function(resolve) {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/firebase.User 
-                    onValue(ref(database, 'User'), function(snapshot) {
-                        snapshot.forEach(function(ChildSnapshot) {
-                            var userUID = ChildSnapshot.key;
-                            if (userUID == user.uid) {
-                                window.userName = ChildSnapshot.val().Name;
-                                console.log('User logged: '+ window.userName);
-                                document.getElementById("modal-loader").style.display = "none";
-                            }
-                        })
-                    });
-                }
-                else {
-                    // User is signed out
-                    console.log('No user signed in!');
-                    openLoginWindow.call();
-                }
-            });
-        });
-    }
-
-    testIfUserLogged().then(getFromDB);
-
 //Get Elements for login
     const txtEmail = document.getElementById("txtEmail");
     const txtPassword = document.getElementById("txtPassword");
@@ -101,24 +73,53 @@ var deskTotal = 56; //total number of desks
         });
     });
 
-function getFromDB() {
-    console.log(window.userName);
-    var selected_date = new Date(document.getElementById("datepicker").value);
-    var yyyy = selected_date.getFullYear();
-    var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-    var dd = selected_date.getDate();
-    onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
-        snapshot.forEach(function(ChildSnapshot) {
-            var buttonNr = "button" + ChildSnapshot.key.substring(4);
-            if (ChildSnapshot.val().Booker == window.username) {
-                document.getElementById(buttonNr).style.backgroundColor = 'blue';
+    testIfUserLogged().then(getFromDB);
+
+    function testIfUserLogged() {
+        return new Promise(function(resolve) {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    // User is signed in, see docs for a list of available properties
+                    // https://firebase.google.com/docs/reference/js/firebase.User 
+                    onValue(ref(database, 'User'), function(snapshot) {
+                        snapshot.forEach(function(ChildSnapshot) {
+                            var userUID = ChildSnapshot.key;
+                            if (userUID == user.uid) {
+                                window.userName = ChildSnapshot.val().Name;
+                                console.log('User logged: '+ window.userName);
+                                document.getElementById("modal-loader").style.display = "none";
+                            }
+                        })
+                    });
                 }
-            else {
-                document.getElementById(buttonNr).style.backgroundColor = 'red';
-            }
-        })
-    });
-}
+                else {
+                    // User is signed out
+                    console.log('No user signed in!');
+                    openLoginWindow.call();
+                }
+            });
+            resolve();
+        });
+    }
+
+    function getFromDB() {
+        console.log(window.userName);
+        var selected_date = new Date(document.getElementById("datepicker").value);
+        var yyyy = selected_date.getFullYear();
+        var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+        var dd = selected_date.getDate();
+        onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
+            snapshot.forEach(function(ChildSnapshot) {
+                var buttonNr = "button" + ChildSnapshot.key.substring(4);
+                if (ChildSnapshot.val().Booker == window.username) {
+                    document.getElementById(buttonNr).style.backgroundColor = 'blue';
+                    }
+                else {
+                    document.getElementById(buttonNr).style.backgroundColor = 'red';
+                }
+            })
+        });
+    }
     
 function saveToDB() {
     var selected_date = new Date(document.getElementById("datepicker").value);
