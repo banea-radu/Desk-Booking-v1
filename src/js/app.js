@@ -228,7 +228,13 @@ document.querySelectorAll('.button-desk').forEach(item => {
                     let userBookings = userBookings;
                 }
             }
-            console.log(userBookings);
+            console.log(deskTotal, userBookings);
+            if (userBookings > 0) {
+                document.getElementById("button-booking-book").disabled = true;
+            }
+            else {
+                document.getElementById("button-booking-book").disabled = false;
+            }
         }
         document.getElementById("modal-booking").style.transform = "translateY(0)";
         document.getElementById("booking-menu").style.transform = "translateY(0)";
