@@ -111,11 +111,11 @@ function getFromDB() {
             //    document.getElementById(buttonNr).innerText = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                 if (ChildSnapshot.val().Booker == window.username) {
                     document.getElementById(buttonNr).style.backgroundColor = 'blue';
-                    console.log('Child EQUAL - ', buttonNr, ' - ', ChildSnapshot.val().Booker,' - ', window.username);
+                    console.log('Child EQUAL - ', buttonNr, ' - ', ChildSnapshot.val().Booker,' - ', window.userName);
                 }
                 else {
                     document.getElementById(buttonNr).style.backgroundColor = 'red';
-                    console.log('Child NOT EQUAL - ', buttonNr, ' - ', ChildSnapshot.val().Booker,' - ', window.username);
+                    console.log('Child NOT EQUAL - ', buttonNr, ' - ', ChildSnapshot.val().Booker,' - ', window.userName);
                 }
             //}
         })
