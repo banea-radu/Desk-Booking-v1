@@ -99,7 +99,7 @@ var deskTotal = 56; //total number of desks
                     myReject('No user signed in!');
                 }
             });
-        );
+	});
         UserLoged.then(
 		    function(value) {getFromDB(value);},
   		    function(error) {getFromDB(error);}
