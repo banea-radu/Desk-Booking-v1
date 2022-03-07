@@ -111,6 +111,7 @@ function getFromDB() {
             });
         }
     });
+    console.log('Inside getFromDB after auth ' + window.userName);
     onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
         snapshot.forEach(function(ChildSnapshot) {
             var buttonNr = "button" + ChildSnapshot.key.substring(4);
