@@ -84,7 +84,7 @@ var deskTotal = 56; //total number of desks
                             var userUID = ChildSnapshot.key;
                             if (userUID == user.uid) {
                                 window.userName = ChildSnapshot.val().Name;
-                                console.log('User logged: '+ window.userName);
+                                //console.log('User logged: '+ window.userName);
                                 document.getElementById("modal-loader").style.display = "none";
                                 document.getElementById("SideBarUserName").innerHTML = window.userName;
                                 myResolve(window.userName);
@@ -116,7 +116,7 @@ var deskTotal = 56; //total number of desks
             snapshot.forEach(function(ChildSnapshot) {
                 var buttonNr = "button" + ChildSnapshot.key.substring(4);
                 if (ChildSnapshot.val().Booker == User) {
-                    document.getElementById(buttonNr).style.backgroundColor = 'blue';
+                    document.getElementById(buttonNr).style.backgroundColor = rgb(240,120,196);
                     }
                 else {
                     document.getElementById(buttonNr).style.backgroundColor = 'red';
@@ -200,8 +200,10 @@ document.querySelectorAll('.button-desk').forEach(item => {
                             document.getElementById("button-booking-book").style.background = '#cccccc';
                         }
                         else {
-                            document.getElementById("booking-menu-circle").style.backgroundColor = "blue";
-                            document.getElementById("button-booking-book").disabled = false;
+                            document.getElementById("booking-menu-circle").style.backgroundColor = rgb(240,120,196);
+                            	var TodayD = new Date();
+				console.log(TodayD);
+			    document.getElementById("button-booking-book").disabled = false;
                             document.getElementById("button-booking-book").style.background = 'LightBlue';
                         }
                     }
@@ -215,7 +217,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             document.getElementById("booking-menu-label-booker").innerHTML = "";
             let userBookings = 0;
             for (let i = 1; i <= deskTotal; i++) {
-                if (document.getElementById('button' + i).style.backgroundColor == 'blue') {
+                if (document.getElementById('button' + i).style.backgroundColor == rgb(240,120,196)) {
                     userBookings = userBookings + 1;
                 }
             }
