@@ -116,7 +116,7 @@ var deskTotal = 56; //total number of desks
             snapshot.forEach(function(ChildSnapshot) {
                 var buttonNr = "button" + ChildSnapshot.key.substring(4);
                 if (ChildSnapshot.val().Booker == User) {
-                    document.getElementById(buttonNr).style.backgroundColor = rgb(240,120,196);
+                    document.getElementById(buttonNr).style.backgroundColor = 'rgb(240,120,196)';
                     }
                 else {
                     document.getElementById(buttonNr).style.backgroundColor = 'red';
@@ -200,7 +200,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
                             document.getElementById("button-booking-book").style.background = '#cccccc';
                         }
                         else {
-                            document.getElementById("booking-menu-circle").style.backgroundColor = rgb(240,120,196);
+                            document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240,120,196)';
                             	var TodayD = new Date();
 				console.log(TodayD);
 			    document.getElementById("button-booking-book").disabled = false;
@@ -217,7 +217,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             document.getElementById("booking-menu-label-booker").innerHTML = "";
             let userBookings = 0;
             for (let i = 1; i <= deskTotal; i++) {
-                if (document.getElementById('button' + i).style.backgroundColor == rgb(240,120,196)) {
+                if (document.getElementById('button' + i).style.backgroundColor == 'rgb(240,120,196')) {
                     userBookings = userBookings + 1;
                 }
             }
