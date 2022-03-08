@@ -217,8 +217,9 @@ document.querySelectorAll('.button-desk').forEach(item => {
             document.getElementById("booking-menu-label-booker").innerHTML = "";
             let userBookings = 0;
             for (let i = 1; i <= deskTotal; i++) {
-            	console.log(i, document.getElementById('button' + i).style.backgroundColor, getComputedStyle(document.getElementById('button' + i)).backgroundColor);
-		if (getComputedStyle(document.getElementById('button' + i)).backgroundColor == "rgb(240 , 120 , 196)") {
+		var DesksStatus = getComputedStyle(document.getElementById('button' + i)).backgroundColor;
+            	//console.log(i, document.getElementById('button' + i).style.backgroundColor, getComputedStyle(document.getElementById('button' + i)).backgroundColor);
+		if ( DesksStatus == "rgb(240 , 120 , 196)") {
 		    userBookings = userBookings + 1;
                 }
             }
