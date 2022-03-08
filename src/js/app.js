@@ -217,12 +217,12 @@ document.querySelectorAll('.button-desk').forEach(item => {
             document.getElementById("booking-menu-label-booker").innerHTML = "";
             let userBookings = 0;
             for (let i = 1; i <= deskTotal; i++) {
-            	console.log(document.getElementById('button' + i).style.backgroundColor);
+            	console.log(userbookings, i, document.getElementById('button' + i).style.backgroundColor, document.getElementById('button' + i).style.background);
 		if (document.getElementById('button' + i).style.backgroundColor == "rgb(240 , 120 , 196)") {
 		    userBookings = userBookings + 1;
                 }
             }
-            //console.log(deskTotal, userBookings);
+            console.log(userBookings);
             if (userBookings > 0) {
                 document.getElementById("button-booking-book").disabled = true;
                 document.getElementById("button-booking-book").style.background = '#cccccc';
