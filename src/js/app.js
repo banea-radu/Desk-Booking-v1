@@ -302,7 +302,7 @@ function changeDate() {
     //setTimeout(getFromDB,500);
     let wait_testIfUserLogged = new Promise(function(myResolve, myReject) {
 	testIfUserLogged();
-    )};
+    });
     wait_testIfUserLogged.then(
 	function(value) {document.getElementById("modal-loader").style.display = "none";},
 	function(error) {document.getElementById("modal-loader").style.display = "none";}
