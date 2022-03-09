@@ -116,7 +116,7 @@ var deskTotal = 56; //total number of desks
             snapshot.forEach(function(ChildSnapshot) {
                 var buttonNr = "button" + ChildSnapshot.key.substring(4);
                 if (ChildSnapshot.val().Booker == User) {
-                    document.getElementById(buttonNr).style.backgroundColor = 'rgb(240,120,196)';
+                    document.getElementById(buttonNr).style.backgroundColor = 'rgb(240, 120, 196)';
                     }
                 else {
                     document.getElementById(buttonNr).style.backgroundColor = 'red';
@@ -301,7 +301,7 @@ function changeDate() {
     }
     //setTimeout(getFromDB,500);
     testIfUserLogged();
-    setTimeout(function() { document.getElementById("modal-loader").style.display = "none"; } ,800);
+    //setTimeout(function() { document.getElementById("modal-loader").style.display = "none"; } ,800);
 }
 
 /*
