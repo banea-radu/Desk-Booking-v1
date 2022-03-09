@@ -179,7 +179,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
         //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
         var DeskStatus = getComputedStyle(event.target).backgroundColor; // get Desk color; green = 'rgb(0, 128, 0)'
-        console.log(DeskStatus);
+        //console.log(DeskStatus);
         if (DeskStatus != "rgb(0, 128, 0)") {
             //document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
             document.getElementById("button-booking-book").innerText = "Unbook";
@@ -223,7 +223,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
 		    userBookings = userBookings + 1;
                 }
             }
-            console.log(userBookings);
+            //console.log(userBookings);
             if (userBookings > 0) {
                 document.getElementById("button-booking-book").disabled = true;
                 document.getElementById("button-booking-book").style.background = '#cccccc';
