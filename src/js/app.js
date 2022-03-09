@@ -85,7 +85,7 @@ var deskTotal = 56; //total number of desks
                             if (userUID == user.uid) {
                                 window.userName = ChildSnapshot.val().Name;
                                 //console.log('User logged: '+ window.userName);
-                                document.getElementById("modal-loader").style.display = "none";
+                                //document.getElementById("modal-loader").style.display = "none";
                                 document.getElementById("SideBarUserName").innerHTML = window.userName;
                                 myResolve(window.userName);
                             }
@@ -300,8 +300,13 @@ function changeDate() {
         document.getElementById('button' + i).style.backgroundColor = 'green';
     }
     //setTimeout(getFromDB,500);
-    testIfUserLogged();
-    //setTimeout(function() { document.getElementById("modal-loader").style.display = "none"; } ,800);
+    let wait_testIfUserLogged = new Promise(function(myResolve, myReject) {
+	testIfUserLogged();
+    )};
+    wait_testIfUserLogged.then(
+	function(value) {document.getElementById("modal-loader").style.display = "none";},
+	function(error) {document.getElementById("modal-loader").style.display = "none";}
+    );
 }
 
 /*
