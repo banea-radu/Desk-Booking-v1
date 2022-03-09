@@ -200,7 +200,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
                             document.getElementById("button-booking-book").style.background = '#cccccc';
                         }
                         else {
-                            document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240 , 120 , 196)'; //pink
+                            document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240, 120, 196)'; //pink
                             	var TodayD = new Date();
 				console.log(TodayD);
 			    document.getElementById("button-booking-book").disabled = false;
@@ -219,7 +219,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
             for (let i = 1; i <= deskTotal; i++) {
 		var DesksStatus = getComputedStyle(document.getElementById('button' + i)).backgroundColor;
             	//console.log(i, document.getElementById('button' + i).style.backgroundColor, getComputedStyle(document.getElementById('button' + i)).backgroundColor);
-		if ( DesksStatus == "rgb(240 , 120 , 196)") {
+		if ( DesksStatus == "rgb(240, 120, 196)") {
 		    userBookings = userBookings + 1;
                 }
             }
