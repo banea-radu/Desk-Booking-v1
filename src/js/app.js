@@ -1,129 +1,129 @@
+document.getElementById("modal-loader").style.display = "block";
 var deskTotal = 56; //total number of desks
 /*Setting the datepicker with todays date-------------------------------------->*/
-    var today = new Date();
-    var today_dd = today.getDate();
-    var today_mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
-    var today_yyyy = today.getFullYear();
-    if (today_dd < 10) {
-        today_dd = '0' + today_dd
-    } 
-    if (today_mm < 10) {
-        today_mm = '0' + today_mm
-    }
-    today = today_yyyy + '-' + today_mm + '-' + today_dd;
-    document.getElementById("datepicker").setAttribute("value", today);
-    //setTimeout(getFromDB,500);
+var today = new Date();
+var today_dd = today.getDate();
+var today_mm = today.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+var today_yyyy = today.getFullYear();
+if (today_dd < 10) {
+    today_dd = '0' + today_dd
+} 
+if (today_mm < 10) {
+    today_mm = '0' + today_mm
+}
+today = today_yyyy + '-' + today_mm + '-' + today_dd;
+document.getElementById("datepicker").setAttribute("value", today);
 /*<-----------------------------------------------------------------------------*/
 
 /*DATABASE -------------------------------------------------------------------->*/
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
-    import { getDatabase, ref, set , onValue, remove} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+import { getDatabase, ref, set , onValue, remove} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-database.js";
 
-    document.getElementById("modal-loader").style.display = "block";
-    const firebaseConfig = {
-        apiKey: "AIzaSyCOAJpowxCi6nakEm7stz_kHok6Y6nXCAU",
-        authDomain: "webapp-58e32.firebaseapp.com",
-        databaseURL: "https://webapp-58e32-default-rtdb.europe-west1.firebasedatabase.app",
-        projectId: "webapp-58e32",
-        storageBucket: "webapp-58e32.appspot.com",
-        messagingSenderId: "466894576414",
-        appId: "1:466894576414:web:f5d9a24a0c1c9e43aa070f",
-        measurementId: "G-LQ4WMX77N0"
-    };
-    const app = initializeApp(firebaseConfig);
-    const database = getDatabase();
-    const auth = getAuth();
-    //console.log('Firebase init completed!');
+const firebaseConfig = {
+    apiKey: "AIzaSyCOAJpowxCi6nakEm7stz_kHok6Y6nXCAU",
+    authDomain: "webapp-58e32.firebaseapp.com",
+    databaseURL: "https://webapp-58e32-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "webapp-58e32",
+    storageBucket: "webapp-58e32.appspot.com",
+    messagingSenderId: "466894576414",
+    appId: "1:466894576414:web:f5d9a24a0c1c9e43aa070f",
+    measurementId: "G-LQ4WMX77N0"
+};
+const app = initializeApp(firebaseConfig);
+const database = getDatabase();
+const auth = getAuth();
+console.log('Firebase init completed!');
 
 //Get Elements for login
-    const txtEmail = document.getElementById("txtEmail");
-    const txtPassword = document.getElementById("txtPassword");
-    const btnLogin = document.getElementById("btnLogin");
+const txtEmail = document.getElementById("txtEmail");
+const txtPassword = document.getElementById("txtPassword");
+const btnLogin = document.getElementById("btnLogin");
 
 //Add Login Event
-    btnLogin.addEventListener('click', e => {
-        document.getElementById("modal-loader").style.display = "block";
-        const email = txtEmail.value;
-        const password = txtPassword.value;
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                closeLoginWindow.call();
-                testIfUserLogged();
-            })
-            .catch((error) => {`enter code here`
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert( 'User/Password Incorrect!' );
-                console.log(errorCode + ' - ' + errorMessage);
-            });
-    });
+btnLogin.addEventListener('click', e => {
+    document.getElementById("modal-loader").style.display = "block";
+    const email = txtEmail.value;
+    const password = txtPassword.value;
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        // Signed in
+            closeLoginWindow.call();
+            testIfUserLogged();
+        })
+        .catch((error) => {`enter code here`
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert( 'User/Password Incorrect!' );
+            console.log(errorCode + ' - ' + errorMessage);
+        });
+});
 
 //Add Sign-out Event
-    document.getElementById("sign-out").addEventListener('click', e => {
-        const auth = getAuth();
-        signOut(auth).then(() => {
-            // Sign-out successful.
-            console.log('User ' + userName + ' Signed-Out!');
-            CloseSideBar();
-            openLoginWindow();
-        }).catch((error) => {
-            // An error happened.
+document.getElementById("sign-out").addEventListener('click', e => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+        // Sign-out successful.
+        console.log('User ' + userName + ' Signed-Out!');
+        CloseSideBar();
+        openLoginWindow();
+    }).catch((error) => {
+        // An error happened.
+    });
+});
+
+function testIfUserLogged() {
+    let UserLogged = new Promise(function(myResolve, myReject) {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User 
+                onValue(ref(database, 'User'), function(snapshot) {
+                    snapshot.forEach(function(ChildSnapshot) {
+                        var userUID = ChildSnapshot.key;
+                        if (userUID == user.uid) {
+                            window.userName = ChildSnapshot.val().Name;
+                            //console.log('User logged: '+ window.userName);
+                            //document.getElementById("modal-loader").style.display = "none";
+                            document.getElementById("SideBarUserName").innerHTML = window.userName;
+                            myResolve(window.userName);
+                        }
+                    })
+                });
+            }
+            else {
+                // User is signed out
+                console.log('No user signed in!');
+                openLoginWindow.call();
+                myReject('No user signed in!');
+            }
         });
     });
+    UserLogged.then(
+	function(value) {getFromDB(value);},
+  	function(error) {getFromDB(error);}
+    );
+}
 
-    function testIfUserLogged() {
-        let UserLogged = new Promise(function(myResolve, myReject) {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/firebase.User 
-                    onValue(ref(database, 'User'), function(snapshot) {
-                        snapshot.forEach(function(ChildSnapshot) {
-                            var userUID = ChildSnapshot.key;
-                            if (userUID == user.uid) {
-                                window.userName = ChildSnapshot.val().Name;
-                                //console.log('User logged: '+ window.userName);
-                                //document.getElementById("modal-loader").style.display = "none";
-                                document.getElementById("SideBarUserName").innerHTML = window.userName;
-                                myResolve(window.userName);
-                            }
-                        })
-                    });
+function getFromDB(User) {
+    //console.log(User);
+    var selected_date = new Date(document.getElementById("datepicker").value);
+    var yyyy = selected_date.getFullYear();
+    var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    var dd = selected_date.getDate();
+    onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
+        snapshot.forEach(function(ChildSnapshot) {
+            var buttonNr = "button" + ChildSnapshot.key.substring(4);
+            if (ChildSnapshot.val().Booker == User) {
+                document.getElementById(buttonNr).style.backgroundColor = 'rgb(240, 120, 196)';
                 }
-                else {
-                    // User is signed out
-                    console.log('No user signed in!');
-                    openLoginWindow.call();
-                    myReject('No user signed in!');
-                }
-            });
-	});
-        UserLogged.then(
-		function(value) {getFromDB(value);},
-  		function(error) {getFromDB(error);}
-	);
-    }
-
-    function getFromDB(User) {
-        //console.log(User);
-        var selected_date = new Date(document.getElementById("datepicker").value);
-        var yyyy = selected_date.getFullYear();
-        var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-        var dd = selected_date.getDate();
-        onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
-            snapshot.forEach(function(ChildSnapshot) {
-                var buttonNr = "button" + ChildSnapshot.key.substring(4);
-                if (ChildSnapshot.val().Booker == User) {
-                    document.getElementById(buttonNr).style.backgroundColor = 'rgb(240, 120, 196)';
-                    }
-                else {
-                    document.getElementById(buttonNr).style.backgroundColor = 'red';
-                }
-            })
-        });
-    }
+            else {
+                document.getElementById(buttonNr).style.backgroundColor = 'red';
+            }
+        })
+    });
+    document.getElementById("modal-loader").style.display = "none";
+}
 
     testIfUserLogged(); // needs to be placed after the functions used are defined
 
