@@ -68,7 +68,7 @@ document.getElementById("sign-out").addEventListener('click', e => {
         CloseSideBar();
         openLoginWindow();
     }).catch((error) => {
-        // An error happened.
+        console.log(error);
     });
 });
 
