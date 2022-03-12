@@ -133,7 +133,7 @@ function saveToDB() {
     var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
     var dd = selected_date.getDate();
     //console.log('Bookings/' + yyyy + '/' + mm + '/' + dd);
-    var booker = document.getElementById("booking-menu-label-booker").innerHTML;
+    var booker = document.getElementById("SideBarUserName").innerHTML;
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     //console.log(yyyy, mm, dd, booker, deskNr);
     set(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + deskNr ), {
