@@ -64,7 +64,7 @@ document.getElementById("sign-out").addEventListener('click', e => {
     const auth = getAuth();
     signOut(auth).then(() => {
         // Sign-out successful.
-        console.log('User ' + userName + ' Signed-Out!');
+        console.log('User ' + document.getElementById("SideBarUserName").innerHTML + ' Signed-Out!');
         CloseSideBar();
         openLoginWindow();
     }).catch((error) => {
