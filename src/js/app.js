@@ -59,6 +59,20 @@ btnLogin.addEventListener('click', e => {
         });
 });
 
+//Add event for pressing 'Enter' key in login form
+txtEmail.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("btnLogin").click();
+  }
+});
+txtPassword.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   document.getElementById("btnLogin").click();
+  }
+});
+
 //Add Sign-out Event
 document.getElementById("sign-out").addEventListener('click', e => {
     const auth = getAuth();
