@@ -158,9 +158,9 @@ document.getElementById("button-burger-menu").addEventListener('click', function
     OpenSideBar.call();
 });
 
-document.getElementById('refresh').addEventListener('click', function(event) {
-    changeDate();
-});
+//document.getElementById('refresh').addEventListener('click', function(event) {
+//    changeDate();
+//});
 
 function OpenSideBar() {
     document.getElementById("modal-sidebar").style.transform = "translateX(0)";
