@@ -297,10 +297,9 @@ function changeDate() {
         document.getElementById('button' + i).innerText = i;
         document.getElementById('button' + i).style.backgroundColor = 'green';
     }
-    //getfromDB(document.getElementById("SideBarUserName").innerHTML);
-console.log(document.getElementById("SideBarUserName").innerHTML);
+    getfromDB(document.getElementById("SideBarUserName").innerHTML);
     //let wait_testIfUserLogged = new Promise(function(myResolve, myReject) {
-    	testIfUserLogged();
+    //	testIfUserLogged();
     //});
     //wait_testIfUserLogged.then(
     //	function(value) {document.getElementById("modal-loader").style.display = "none";},
