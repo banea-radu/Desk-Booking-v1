@@ -133,7 +133,7 @@ function saveToDB() {
     var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
     var dd = selected_date.getDate();
     //console.log('Bookings/' + yyyy + '/' + mm + '/' + dd);
-    var booker = window.userName; //document.getElementById("booking-menu-label-booker").innerHTML;
+    var booker = document.getElementById("booking-menu-label-booker").innerHTML;
     var deskNr = document.getElementById("booking-menu-label-desk-number").innerHTML.split(" Number ")[1];
     //console.log(yyyy, mm, dd, booker, deskNr);
     set(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd + '/Desk' + deskNr ), {
@@ -194,7 +194,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
                         var bookerInitials = ChildSnapshot.val().Booker.split(" ");
                         document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
                         document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
-                        if (ChildSnapshot.val().Booker != window.userName) {
+                        if (ChildSnapshot.val().Booker != document.getElementById("SideBarUserName").innerHTML) {
                             document.getElementById("booking-menu-circle").style.backgroundColor = "red";
                             document.getElementById("button-booking-book").disabled = true;
                             document.getElementById("button-booking-book").style.background = '#cccccc';
