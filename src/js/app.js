@@ -297,7 +297,7 @@ function changeDate() {
         document.getElementById('button' + i).innerText = i;
         document.getElementById('button' + i).style.backgroundColor = 'green';
     }
-    getfromDB(document.getElementById("SideBarUserName").innerHTML);
+    getfromDB('Radu Banea');
     //let wait_testIfUserLogged = new Promise(function(myResolve, myReject) {
     //	testIfUserLogged();
     //});
