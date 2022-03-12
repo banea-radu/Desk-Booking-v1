@@ -304,9 +304,9 @@ function changeDate() {
 	testIfUserLogged();
     });
     wait_testIfUserLogged.then(
-	function(value) {document.getElementById("modal-loader").style.display = "none";},
-	function(error) {document.getElementById("modal-loader").style.display = "none";}
-    );
+    	function(value) {document.getElementById("modal-loader").style.display = "none";},
+  	function(error) {document.getElementById("modal-loader").style.display = "none";}
+    );	
 }
 
 /*
