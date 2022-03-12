@@ -201,8 +201,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
                         }
                         else {
                             document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240, 120, 196)'; //pink
-                            	var TodayD = new Date();
-				console.log(TodayD);
+                             //var TodayD = new Date();
 			    document.getElementById("button-booking-book").disabled = false;
                             document.getElementById("button-booking-book").style.background = 'LightBlue';
                         }
