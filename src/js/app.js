@@ -82,11 +82,11 @@ function testIfUserLogged() {
                     snapshot.forEach(function(ChildSnapshot) {
                         var userUID = ChildSnapshot.key;
                         if (userUID == user.uid) {
-                            window.userName = ChildSnapshot.val().Name;
+                            document.getElementById("SideBarUserName").innerHTML = ChildSnapshot.val().Name;
                             //console.log('User logged: '+ window.userName);
                             //document.getElementById("modal-loader").style.display = "none";
-                            document.getElementById("SideBarUserName").innerHTML = window.userName;
-                            myResolve(window.userName);
+                            //document.getElementById("SideBarUserName").innerHTML = window.userName;
+                            myResolve(ChildSnapshot.val().Name);
                         }
                     })
                 });
@@ -293,20 +293,19 @@ document.getElementById('datepicker').addEventListener('change', function(event)
 });
 
 function changeDate() {
-    document.getElementById("modal-loader").style.display = "block";
-    //var deskTotal = 56;
+    //document.getElementById("modal-loader").style.display = "block";
     for (let i = 1; i <= deskTotal; i++) {
         document.getElementById('button' + i).innerText = i;
         document.getElementById('button' + i).style.backgroundColor = 'green';
     }
-    //setTimeout(getFromDB,500);
-    let wait_testIfUserLogged = new Promise(function(myResolve, myReject) {
-	testIfUserLogged();
-    });
-    wait_testIfUserLogged.then(
-    	function(value) {document.getElementById("modal-loader").style.display = "none";},
-  	function(error) {document.getElementById("modal-loader").style.display = "none";}
-    );	
+    getfromDB(document.getElementById("SideBarUserName").innerHTML);
+    //let wait_testIfUserLogged = new Promise(function(myResolve, myReject) {
+    //	testIfUserLogged();
+    //});
+    //wait_testIfUserLogged.then(
+    //	function(value) {document.getElementById("modal-loader").style.display = "none";},
+    //	function(error) {document.getElementById("modal-loader").style.display = "none";}
+    //);	
 }
 
 /*
