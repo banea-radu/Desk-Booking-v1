@@ -201,7 +201,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
 	var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
 	var dd = selected_date.getDate();
 	var disable_book_button = false;
-	if (TodayD >= selected_date) {
+	if (selected_date >= TodayD) {
 		disable_book_button = false;
 	}
 	else {
