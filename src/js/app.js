@@ -218,16 +218,19 @@ document.querySelectorAll('.button-desk').forEach(item => {
 						document.getElementById("booking-menu-circle").style.backgroundColor = "red";
 						document.getElementById("button-booking-book").disabled = true;
 						document.getElementById("button-booking-book").style.background = '#cccccc';
+						document.getElementById("button-booking-book").style.color = '#666666';
 					}
                         		else {
                             			document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240, 120, 196)'; //pink
 			    			if (disable_book_button) {
 							document.getElementById("button-booking-book").disabled = true;
 							document.getElementById("button-booking-book").style.background = '#cccccc';
+							document.getElementById("button-booking-book").style.color = '#666666';
 						}
 						else {
 							document.getElementById("button-booking-book").disabled = false;
 							document.getElementById("button-booking-book").style.background = 'LightBlue';
+							document.getElementById("button-booking-book").style.color = 'black';
 						}
                         		}
                     		}
@@ -249,15 +252,18 @@ document.querySelectorAll('.button-desk').forEach(item => {
 		if (userBookings > 0) {
                 	document.getElementById("button-booking-book").disabled = true;
                 	document.getElementById("button-booking-book").style.background = '#cccccc';
+			document.getElementById("button-booking-book").style.color = '#666666';
             	}
             	else {
 			if (disable_book_button) {
 				document.getElementById("button-booking-book").disabled = true;
 				document.getElementById("button-booking-book").style.background = '#cccccc';
+				document.getElementById("button-booking-book").style.color = '#666666';
 			}
 			else {
 				document.getElementById("button-booking-book").disabled = false;
 				document.getElementById("button-booking-book").style.background = 'LightBlue';
+				document.getElementById("button-booking-book").style.color = 'black';
 			}
             	}
 	}
