@@ -191,10 +191,7 @@ document.querySelectorAll('.button-desk').forEach(item => {
     item.addEventListener('click', event => {
         var DeskNumber = event.target.id.substring(6);
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
-        //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
         var DeskStatus = getComputedStyle(event.target).backgroundColor; // get Desk color; green = 'rgb(0, 128, 0)'
-        //console.log(DeskStatus);
-        
 	var TodayD = new Date();
 	var selected_date = new Date(document.getElementById("datepicker").value);
 	var yyyy = selected_date.getFullYear();
@@ -206,7 +203,8 @@ document.querySelectorAll('.button-desk').forEach(item => {
 	}
 	else {
 		disable_book_button = true;
-	}	    
+	}
+	console.log(selected_date, TodayD);
 	if (DeskStatus != "rgb(0, 128, 0)") {
 		document.getElementById("button-booking-book").innerText = "Unbook";
 		onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
