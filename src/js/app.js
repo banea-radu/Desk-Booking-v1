@@ -194,58 +194,75 @@ document.querySelectorAll('.button-desk').forEach(item => {
         //var DeskStatus = document.getElementById("button"+DeskNumber).innerText;
         var DeskStatus = getComputedStyle(event.target).backgroundColor; // get Desk color; green = 'rgb(0, 128, 0)'
         //console.log(DeskStatus);
-        if (DeskStatus != "rgb(0, 128, 0)") {
-            //document.getElementById("booking-menu-circle").innerHTML = document.getElementById("button"+DeskNumber).innerText;
-            document.getElementById("button-booking-book").innerText = "Unbook";
-            var selected_date = new Date(document.getElementById("datepicker").value);
-            var yyyy = selected_date.getFullYear();
-            var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
-            var dd = selected_date.getDate();
-            onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
-                snapshot.forEach(function(ChildSnapshot) {
-                    if (ChildSnapshot.key == "Desk"+DeskNumber) {
-                        //get booker name and initials 
-                        var bookerInitials = ChildSnapshot.val().Booker.split(" ");
-                        document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
-                        document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
-                        if (ChildSnapshot.val().Booker != document.getElementById("SideBarUserName").innerHTML) {
-                            document.getElementById("booking-menu-circle").style.backgroundColor = "red";
-                            document.getElementById("button-booking-book").disabled = true;
-                            document.getElementById("button-booking-book").style.background = '#cccccc';
-                        }
-                        else {
-                            document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240, 120, 196)'; //pink
-                             //var TodayD = new Date();
-			    document.getElementById("button-booking-book").disabled = false;
-                            document.getElementById("button-booking-book").style.background = 'LightBlue';
-                        }
-                    }
-                })
-            });
+        
+	var TodayD = new Date();
+	var selected_date = new Date(document.getElementById("datepicker").value);
+	var yyyy = selected_date.getFullYear();
+	var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+	var dd = selected_date.getDate();
+	var disable_book_button = false;
+	if (TodayD >= selected_date) {
+		disable_book_button = false;
+	}
+	else {
+		disable_book_button = true;
+	}	    
+	if (DeskStatus != "rgb(0, 128, 0)") {
+		document.getElementById("button-booking-book").innerText = "Unbook";
+		onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
+			snapshot.forEach(function(ChildSnapshot) {
+				if (ChildSnapshot.key == "Desk"+DeskNumber) {
+					//get booker name and initials 
+					var bookerInitials = ChildSnapshot.val().Booker.split(" ");
+					document.getElementById("booking-menu-circle").innerHTML = bookerInitials[0].substring(0,1) + bookerInitials[1].substring(0,1);
+					document.getElementById("booking-menu-label-booker").innerHTML = ChildSnapshot.val().Booker;
+					if (ChildSnapshot.val().Booker != document.getElementById("SideBarUserName").innerHTML) {
+						document.getElementById("booking-menu-circle").style.backgroundColor = "red";
+						document.getElementById("button-booking-book").disabled = true;
+						document.getElementById("button-booking-book").style.background = '#cccccc';
+					}
+                        		else {
+                            			document.getElementById("booking-menu-circle").style.backgroundColor = 'rgb(240, 120, 196)'; //pink
+			    			if (disable_book_button) {
+							document.getElementById("button-booking-book").disabled = true;
+							document.getElementById("button-booking-book").style.background = '#cccccc';
+						}
+						else {
+							document.getElementById("button-booking-book").disabled = false;
+							document.getElementById("button-booking-book").style.background = 'LightBlue';
+						}
+                        		}
+                    		}
+                	})
+            	});
         }
-        else {
-            document.getElementById("booking-menu-circle").innerHTML = "Free";
-            document.getElementById("booking-menu-circle").style.backgroundColor = "green";
-            document.getElementById("button-booking-book").innerText = "Book";
-            document.getElementById("booking-menu-label-booker").innerHTML = "";
-            let userBookings = 0;
-            for (let i = 1; i <= deskTotal; i++) {
-		var DesksStatus = getComputedStyle(document.getElementById('button' + i)).backgroundColor;
-            	//console.log(i, document.getElementById('button' + i).style.backgroundColor, getComputedStyle(document.getElementById('button' + i)).backgroundColor);
-		if ( DesksStatus == "rgb(240, 120, 196)") {
-		    userBookings = userBookings + 1;
-                }
-            }
-            //console.log(userBookings);
-            if (userBookings > 0) {
-                document.getElementById("button-booking-book").disabled = true;
-                document.getElementById("button-booking-book").style.background = '#cccccc';
-            }
-            else {
-                document.getElementById("button-booking-book").disabled = false;
-                document.getElementById("button-booking-book").style.background = 'LightBlue';
-            }
-        }
+       	else {
+		document.getElementById("booking-menu-circle").innerHTML = "Free";
+		document.getElementById("booking-menu-circle").style.backgroundColor = "green";
+		document.getElementById("button-booking-book").innerText = "Book";
+		document.getElementById("booking-menu-label-booker").innerHTML = "";
+		let userBookings = 0;
+            	for (let i = 1; i <= deskTotal; i++) {
+			var DesksStatus = getComputedStyle(document.getElementById('button' + i)).backgroundColor;
+			if ( DesksStatus == "rgb(240, 120, 196)") {
+			    userBookings = userBookings + 1;
+			}
+		}
+		if (userBookings > 0) {
+                	document.getElementById("button-booking-book").disabled = true;
+                	document.getElementById("button-booking-book").style.background = '#cccccc';
+            	}
+            	else {
+			if (disable_book_button) {
+				document.getElementById("button-booking-book").disabled = true;
+				document.getElementById("button-booking-book").style.background = '#cccccc';
+			}
+			else {
+				document.getElementById("button-booking-book").disabled = false;
+				document.getElementById("button-booking-book").style.background = 'LightBlue';
+			}
+            	}
+	}
         document.getElementById("modal-booking").style.transform = "translateY(0)";
         document.getElementById("booking-menu").style.transform = "translateY(0)";
     })
