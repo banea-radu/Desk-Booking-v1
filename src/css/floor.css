@@ -428,6 +428,18 @@ img {
     transform: translateX(-100%);
 }
 
+.sidebar-button {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    color: black;
+	border: none;
+	background: none;
+    text-align: left;
+}
+
+.sidebar-button:hover {background-color: gray}
+
 .modal-content-booking-menu {
     position: absolute; /* centering horizontally requires the following 3 properties*/
         left:0;
