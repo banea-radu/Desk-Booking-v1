@@ -205,7 +205,6 @@ document.querySelectorAll('.button-desk').forEach(item => {
 	else {
 		disable_book_button = true;
 	}
-	console.log(selected_date, TodayD);
 	if (DeskStatus != "rgb(0, 128, 0)") {
 		document.getElementById("button-booking-book").innerText = "Unbook";
 		onValue(ref(database, 'Bookings/' + yyyy + '/' + mm + '/' + dd), function(snapshot) {
