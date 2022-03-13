@@ -192,13 +192,14 @@ document.querySelectorAll('.button-desk').forEach(item => {
         var DeskNumber = event.target.id.substring(6);
         document.getElementById("booking-menu-label-desk-number").innerHTML = "Desk Number " + DeskNumber;
         var DeskStatus = getComputedStyle(event.target).backgroundColor; // get Desk color; green = 'rgb(0, 128, 0)'
-	var TodayD = new Date();
+	var YesterDay = new Date();
+	    YesterDay.setDate(YesterDay.getDate()-1);
 	var selected_date = new Date(document.getElementById("datepicker").value);
 	var yyyy = selected_date.getFullYear();
 	var mm = selected_date.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
 	var dd = selected_date.getDate();
 	var disable_book_button = false;
-	if (selected_date >= TodayD) {
+	if (selected_date >= YesterDay) {
 		disable_book_button = false;
 	}
 	else {
