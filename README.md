@@ -1,1 +1,1 @@
-## Desk Booking application (learn by doing project)
+## Learn by doing Project 1 - Desk Booking (version 1)
