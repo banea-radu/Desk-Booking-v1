@@ -1,1 +1,3 @@
-## Learn by doing Project 1 - Desk Booking (version 2)
+## Learn by doing Project - DeskBooking (version 3)
+
+### Desk Booking Application for Office Buildings
